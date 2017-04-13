@@ -4,4 +4,6 @@
     <string name="video_data_key">video_data</string>
     <string name="play">Play</string>
     <string name="dash_url_key">dash_url</string>
+    <string name="images_url_key">images_url</string>
+    <string name="dash_video_source_key">dash</string>
 </resources>

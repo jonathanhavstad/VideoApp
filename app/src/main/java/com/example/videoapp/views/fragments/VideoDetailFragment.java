@@ -37,6 +37,7 @@ public class VideoDetailFragment extends Fragment {
     @BindView(R.id.play_button)
     Button playButton;
 
+    private String imagesUrl;
     private String dashUrl;
     private VideoData videoData;
     private AppPresenter.PLAYER_TYPE playerType;
@@ -44,11 +45,13 @@ public class VideoDetailFragment extends Fragment {
     private OnPlayVideo onPlayVideo;
 
     public static VideoDetailFragment newInstance(Context context,
+                                                  String imagesUrl,
                                                   String dashUrl,
                                                   VideoData videoData,
                                                   AppPresenter.PLAYER_TYPE playerType) {
         VideoDetailFragment videoDetailFragment = new VideoDetailFragment();
         Bundle args = new Bundle();
+        args.putString(context.getString(R.string.images_url_key), imagesUrl);
         args.putString(context.getString(R.string.dash_url_key), dashUrl);
         args.putParcelable(context.getString(R.string.video_data_key), videoData);
         args.putString(context.getString(R.string.player_type_key), playerType.toString());
@@ -60,6 +63,7 @@ public class VideoDetailFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
+        imagesUrl = args.getString(getString(R.string.images_url_key));
         dashUrl = args.getString(getString(R.string.dash_url_key));
         videoData = args.getParcelable(getString(R.string.video_data_key));
         playerType = AppPresenter.PLAYER_TYPE.valueOf(args.getString(getString(R.string.player_type_key)));
@@ -71,7 +75,10 @@ public class VideoDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_video_detail, container, false);
         ButterKnife.bind(this, view);
         videoTitle.setText(videoData.getTitle());
-        Picasso.with(view.getContext()).load(videoData.getImage_780_1200()).into(videoThumbnail);
+        StringBuffer imagesFullUrl = new StringBuffer();
+        imagesFullUrl.append(imagesUrl);
+        imagesFullUrl.append(videoData.getImage_780_1200());
+        Picasso.with(view.getContext()).load(imagesFullUrl.toString()).into(videoThumbnail);
         videoDuration.setText(videoData.getDuration());
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override

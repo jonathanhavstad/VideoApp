@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
  */
 
 public class VideoListFragment extends Fragment {
-    private static final String BASE_URL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/images/";
     private static final String REST_API_URL = "gtv-videos-bucket/CastVideos/f.json";
 
     private OnItemSelected onItemSelected;
@@ -34,13 +33,14 @@ public class VideoListFragment extends Fragment {
     private RestTask restTask;
     private VideoListAdapter videoListAdapter;
     private boolean restTaskValid = false;
+    private String imagesUrl;
     private String dashUrl;
 
     @BindView(R.id.video_list)
     RecyclerView videoList;
 
     public interface OnItemSelected {
-        void itemSelected(String dashUrl, VideoData videoData, int position);
+        void itemSelected(String imagesUrl, String dashUrl, VideoData videoData, int position);
     }
 
     @Nullable
@@ -51,10 +51,9 @@ public class VideoListFragment extends Fragment {
         videoListAdapter = new VideoListAdapter(videoDataList, new VideoListAdapter.OnItemSelected() {
             @Override
             public void itemSelected(VideoData videoData, int position) {
-                onItemSelected.itemSelected(dashUrl, videoData, position);
+                onItemSelected.itemSelected(imagesUrl, dashUrl, videoData, position);
             }
-        },
-                BASE_URL);
+        });
         videoList.setAdapter(videoListAdapter);
 
         return view;
@@ -79,9 +78,11 @@ public class VideoListFragment extends Fragment {
             @Override
             public void finished(Category category) {
                 if (restTaskValid) {
+                    imagesUrl = category.getImagesUrl();
                     dashUrl = category.getDashUrl();
                     videoDataList.clear();
                     videoDataList.addAll(category.getVideoDataList());
+                    videoListAdapter.setImagesUrl(imagesUrl);
                     videoListAdapter.notifyDataSetChanged();
                 }
             }

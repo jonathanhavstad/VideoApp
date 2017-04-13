@@ -39,10 +39,12 @@ public class AppPresenter {
 
     public void launchVideoDetailsActivity(Activity activity,
                                            int requestCode,
+                                           String imagesUrl,
                                            String dashUrl,
                                            VideoData videoData,
                                            PLAYER_TYPE playerType) {
         Intent videoDetailsIntent = new Intent(activity, VideoDetailsActivity.class);
+        videoDetailsIntent.putExtra(activity.getString(R.string.images_url_key), imagesUrl);
         videoDetailsIntent.putExtra(activity.getString(R.string.dash_url_key), dashUrl);
         videoDetailsIntent.putExtra(activity.getString(R.string.video_data_key), videoData);
         videoDetailsIntent.putExtra(activity.getString(R.string.player_type_key), playerType.toString());

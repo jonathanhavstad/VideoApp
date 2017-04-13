@@ -22,11 +22,13 @@ public class VideoDetailsActivity extends FragmentActivity implements VideoDetai
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_detail);
         Intent intent = getIntent();
+        String imagesUrl = intent.getStringExtra(getString(R.string.images_url_key));
         String dashUrl = intent.getStringExtra(getString(R.string.dash_url_key));
         VideoData videoData = intent.getParcelableExtra(getString(R.string.video_data_key));
         AppPresenter.PLAYER_TYPE playerType =
                 AppPresenter.PLAYER_TYPE.valueOf(intent.getStringExtra(getString(R.string.player_type_key)));
         VideoDetailFragment videoDetailFragment = VideoDetailFragment.newInstance(this,
+                imagesUrl,
                 dashUrl,
                 videoData,
                 playerType);

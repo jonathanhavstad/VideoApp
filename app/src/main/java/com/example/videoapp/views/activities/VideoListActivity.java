@@ -23,13 +23,14 @@ public class VideoListActivity extends FragmentActivity implements VideoListFrag
     }
 
     @Override
-    public void itemSelected(String dashUrl, VideoData videoData, int position) {
+    public void itemSelected(String imagesUrl, String dashUrl, VideoData videoData, int position) {
         AppPresenter.PLAYER_TYPE playerType = AppPresenter.PLAYER_TYPE.EXO_PLAYER;
         if (position % 2 == 1) {
             playerType = AppPresenter.PLAYER_TYPE.JW_PLAYER;
         }
         AppPresenter.getAppPresenter().launchVideoDetailsActivity(this,
                 REQUEST_CODE,
+                imagesUrl,
                 dashUrl,
                 videoData,
                 playerType);

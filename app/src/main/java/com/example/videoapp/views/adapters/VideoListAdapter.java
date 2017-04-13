@@ -27,14 +27,12 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.View
 
     private final List<VideoData> videoDataList;
     private final OnItemSelected onItemSelected;
-    private final String baseUrl;
+    private String imagesUrl;
 
     public VideoListAdapter(List<VideoData> videoDataList,
-                            OnItemSelected onItemSelected,
-                            String baseUrl) {
+                            OnItemSelected onItemSelected) {
         this.videoDataList = videoDataList;
         this.onItemSelected = onItemSelected;
-        this.baseUrl = baseUrl;
     }
 
     @Override
@@ -50,7 +48,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.View
         final VideoData videoData = videoDataList.get(position);
         holder.listItemVideoTitle.setText(videoData.getTitle());
         StringBuffer imageFullUrl = new StringBuffer();
-        imageFullUrl.append(baseUrl);
+        imageFullUrl.append(imagesUrl);
         imageFullUrl.append(videoData.getImage_480_270());
         Picasso
                 .with(holder.itemView.getContext())
@@ -84,5 +82,9 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.View
             this.itemView = itemView;
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public void setImagesUrl(String imagesUrl) {
+        this.imagesUrl = imagesUrl;
     }
 }
