@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.videoapp.R;
 import com.example.videoapp.models.data.VideoData;
+import static com.example.videoapp.models.utils.TimeUtils.formatTimeFromSeconds;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -54,7 +56,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.View
                 .with(holder.itemView.getContext())
                 .load(imageFullUrl.toString())
                 .into(holder.listItemImageView);
-        holder.listItemVideoDuration.setText(videoData.getDuration());
+        holder.listItemVideoDuration.setText(formatTimeFromSeconds(Long.valueOf(videoData.getDuration())));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -3,17 +3,19 @@ package com.example.videoapp.views.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.videoapp.R;
 import com.example.videoapp.models.data.VideoData;
 import com.example.videoapp.presenters.AppPresenter;
+import static com.example.videoapp.models.utils.TimeUtils.formatTimeFromSeconds;
+
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -34,8 +36,12 @@ public class VideoDetailFragment extends Fragment {
     ImageView videoThumbnail;
     @BindView(R.id.video_duration)
     TextView videoDuration;
+    @BindView(R.id.video_studio)
+    TextView videoStudio;
+    @BindView(R.id.video_subtitle)
+    TextView videoSubtitle;
     @BindView(R.id.play_button)
-    Button playButton;
+    FloatingActionButton playButton;
 
     private String imagesUrl;
     private String dashUrl;
@@ -74,12 +80,14 @@ public class VideoDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_video_detail, container, false);
         ButterKnife.bind(this, view);
-        videoTitle.setText(videoData.getTitle());
         StringBuffer imagesFullUrl = new StringBuffer();
         imagesFullUrl.append(imagesUrl);
         imagesFullUrl.append(videoData.getImage_780_1200());
         Picasso.with(view.getContext()).load(imagesFullUrl.toString()).into(videoThumbnail);
-        videoDuration.setText(videoData.getDuration());
+        videoTitle.setText(videoData.getTitle());
+        videoDuration.setText(formatTimeFromSeconds(Long.valueOf(videoData.getDuration())));
+        videoStudio.setText(videoData.getStudio());
+        videoSubtitle.setText(videoData.getSubtitle());
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
