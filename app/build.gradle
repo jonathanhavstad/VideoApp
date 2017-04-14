@@ -38,6 +38,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.google.android.exoplayer:exoplayer:r2.3.1'
-    compile 'com.longtailvideo.jwplayer:jwplayer-core:+'
-    compile 'com.longtailvideo.jwplayer:jwplayer-common:+'
+    compile 'com.longtailvideo.jwplayer:jwplayer-core:2.7.1+16'
+    compile 'com.longtailvideo.jwplayer:jwplayer-common:2.7.1+16'
 }

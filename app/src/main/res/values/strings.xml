@@ -6,4 +6,6 @@
     <string name="dash_url_key">dash_url</string>
     <string name="images_url_key">images_url</string>
     <string name="dash_video_source_key">dash</string>
+    <string name="exo_player_toast_message">Playing Video Using ExoPlayer</string>
+    <string name="jw_player_toast_message">Playing Video Using JWPlayer</string>
 </resources>
