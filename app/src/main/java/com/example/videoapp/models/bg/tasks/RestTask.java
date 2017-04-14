@@ -11,8 +11,6 @@ import com.google.gson.JsonObject;
 
 import java.io.IOException;
 
-import javax.inject.Inject;
-
 /**
  * Created by jonathanhavstad on 4/13/17.
  */

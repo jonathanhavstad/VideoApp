@@ -13,7 +13,6 @@ import com.example.videoapp.models.data.VideoData;
 import com.example.videoapp.models.data.VideoSource;
 import com.example.videoapp.presenters.AppPresenter;
 import com.example.videoapp.views.fragments.ExoPlayerFragment;
-import com.longtailvideo.jwplayer.JWPlayerFragment;
 import com.longtailvideo.jwplayer.JWPlayerSupportFragment;
 import com.longtailvideo.jwplayer.configuration.PlayerConfig;
 
