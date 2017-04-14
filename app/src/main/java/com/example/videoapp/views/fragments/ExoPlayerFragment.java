@@ -72,7 +72,8 @@ public class ExoPlayerFragment extends Fragment {
         simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector, loadControl);
 
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getContext(),
-                Util.getUserAgent(getContext(), "VideoApp"));
+                Util.getUserAgent(getContext(), getString(R.string.video_app_name)),
+                (DefaultBandwidthMeter) bandwidthMeter);
         StringBuffer videoUri = new StringBuffer();
         videoUri.append(dashUrl);
         for (VideoSource videoSource : videoData.getSources()) {

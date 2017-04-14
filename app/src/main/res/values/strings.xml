@@ -10,4 +10,5 @@
     <string name="jw_player_toast_message">Playing Video Using JWPlayer</string>
     <string name="video_title_header">Title</string>
     <string name="video_duration_header">Duration</string>
+    <string name="video_app_name">VideoApp</string>
 </resources>
