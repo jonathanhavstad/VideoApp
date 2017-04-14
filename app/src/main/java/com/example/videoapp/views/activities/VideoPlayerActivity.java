@@ -1,6 +1,7 @@
 package com.example.videoapp.views.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -57,5 +58,10 @@ public class VideoPlayerActivity extends FragmentActivity {
                     .add(R.id.video_player_view, playerFrament)
                     .commit();
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+
     }
 }

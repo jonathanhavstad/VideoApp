@@ -23,7 +23,8 @@
         </activity>
         <activity android:name=".views.activities.VideoListActivity"/>
         <activity android:name=".views.activities.VideoDetailsActivity"/>
-        <activity android:name=".views.activities.VideoPlayerActivity"/>
+        <activity android:name=".views.activities.VideoPlayerActivity"
+                  android:configChanges="orientation"/>
     </application>
 
 </manifest>
