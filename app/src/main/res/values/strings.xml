@@ -11,4 +11,5 @@
     <string name="video_title_header">Title</string>
     <string name="video_duration_header">Duration</string>
     <string name="video_app_name">VideoApp</string>
+    <string name="player_state_key">player_state</string>
 </resources>

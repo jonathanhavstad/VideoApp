@@ -14,17 +14,19 @@
         <meta-data
             android:name="JW_LICENSE_KEY"
             android:value="r0EX9zcGRSWp6LELKJ9PiTxDsKzi5x0FonSl9A=="/>
-        <activity android:name=".LaunchActivity">
+        <activity android:name=".LaunchActivity" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".views.activities.VideoListActivity"/>
-        <activity android:name=".views.activities.VideoDetailsActivity"/>
+        <activity android:name=".views.activities.VideoListActivity"
+                android:launchMode="singleTop"/>
+        <activity android:name=".views.activities.VideoDetailsActivity"
+                android:launchMode="singleTop"/>
         <activity android:name=".views.activities.VideoPlayerActivity"
-                  android:configChanges="orientation"/>
+                android:launchMode="singleTop"/>
     </application>
 
 </manifest>
