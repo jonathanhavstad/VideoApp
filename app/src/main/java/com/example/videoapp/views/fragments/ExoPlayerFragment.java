@@ -24,6 +24,7 @@ import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.dash.DashChunkSource;
 import com.google.android.exoplayer2.source.dash.DashMediaSource;
 import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource;
+import com.google.android.exoplayer2.source.hls.HlsMediaSource;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
@@ -139,14 +140,11 @@ public class ExoPlayerFragment extends Fragment {
 
         simpleExoPlayerView.setPlayer(simpleExoPlayer);
 
-        DataSource.Factory mediaDataSourceFactor = new DefaultDataSourceFactory(getContext(),
+        DataSource.Factory mediaDataSourceFactory = new DefaultDataSourceFactory(getContext(),
                 (DefaultBandwidthMeter) bandwidthMeter,
                 new DefaultHttpDataSourceFactory(
                         Util.getUserAgent(getContext(), getString(R.string.video_app_name)),
                         (DefaultBandwidthMeter) bandwidthMeter));
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getContext(),
-                null,
-                new DefaultHttpDataSourceFactory(Util.getUserAgent(getContext(), getString(R.string.video_app_name)), null));
         StringBuffer videoUri = new StringBuffer();
         videoUri.append(dashUrl);
         for (VideoSource videoSource : videoData.getSources()) {
@@ -154,11 +152,15 @@ public class ExoPlayerFragment extends Fragment {
                 videoUri.append(videoSource.getUrl());
             }
         }
-        DashChunkSource.Factory dashChunkSourceFactory =
-                new DefaultDashChunkSource.Factory(mediaDataSourceFactor);
-        MediaSource videoSource = new DashMediaSource(Uri.parse(videoUri.toString()),
-                dataSourceFactory,
-                dashChunkSourceFactory,
+//        DashChunkSource.Factory dashChunkSourceFactory =
+//                new DefaultDashChunkSource.Factory(mediaDataSourceFactor);
+//        MediaSource videoSource = new DashMediaSource(Uri.parse(videoUri.toString()),
+//                dataSourceFactory,
+//                dashChunkSourceFactory,
+//                null,
+//                null);
+        MediaSource videoSource = new HlsMediaSource(Uri.parse(videoUri.toString()),
+                mediaDataSourceFactory,
                 null,
                 null);
         simpleExoPlayer.prepare(videoSource);

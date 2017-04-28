@@ -46,9 +46,9 @@ public class MockDataDetailTest {
     private static final String MOCK_VIDEO_780_1200 = "780x1200/DesigningForGoogleCast-887x1200.jpg";
     private static final String MOCK_VIDEO_STUDIO = "Google IO - 2014";
     private static final String MOCK_VIDEO_SUBTITLE = "Fusce id nisi turpis. Praesent viverra bibendum semper. Donec tristique, orci sed semper lacinia, quam erat rhoncus massa, non congue tellus est quis tellus. Sed mollis orci venenatis quam scelerisque accumsan. Curabitur a massa sit amet mi accumsan mollis sed et magna. Vivamus sed aliquam risus. Nulla eget dolor in elit facilisis mattis. Ut aliquet luctus lacus. Phasellus nec commodo erat. Praesent tempus id lectus ac scelerisque. Maecenas pretium cursus lectus id volutpat.";
-    private static final String MOCK_VIDEO_SOURCE_URL = "DesigningForGoogleCast.mpd";
+    private static final String MOCK_VIDEO_SOURCE_URL = "2017/04/JIBON%20NIYE%20KHELA/JIBON%20NIYE%20KHELA_master.m3u8";
     private static final String MOCK_IMAGES_URL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/images/";
-    private static final String MOCK_DASH_URL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/dash/";
+    private static final String MOCK_DASH_URL = "http://vsvf.viewlift.com/Renditions/";
 
     @Before
     public void setupMockData() {
